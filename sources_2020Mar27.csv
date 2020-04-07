@@ -1,0 +1,27 @@
+﻿Indicators/Data Layers,Data Source/Remarks,Link,Resolution,Measurement
+1.      Population density,"WorldPop, citation for Mongolia dataset: WorldPop (www.worldpop.org - School of Geography and Environmental Science, University of Southampton; Department of Geography and Geosciences, University of Louisville; Departement de Geographie, Universite de Namur) and Center for International Earth Science Information Network (CIESIN), Columbia University (2018). Global High Resolution Population Denominators Project - Funded by The Bill and Melinda Gates Foundation (OPP1134076). https://dx.doi.org/10.5258/SOTON/WP00645",https://www.worldpop.org/geodata/summary?id=80, 0.000833333 decimal degrees (approx 100m at the equator),Units are estimated persons per grid square
+2.      Urban extent and change,"Global Human Settlements Layer (GHSL), GHS BUILT-UP GRID (LDS)",https://ghsl.jrc.ec.europa.eu/ghs_bu.php,30m,"0 = no data
+1 = water surface
+2 = land no built-up in any epoch
+3 = built-up from 2000 to 2014 epochs
+4 = built-up from 1990 to 2000 epochs
+5 = built-up from 1975 to 1990 epochs
+6 = built-up up to 1975 epoch"
+3.      Land cover ,ESA global Land Cover CCI,http://maps.elie.ucl.ac.be/CCI/viewer/download.php,300m,"Global legend counts 22 classes and each class is associated with a ten values code (i.e. class codes of 10, 20, 30,
+etc.)"
+4.      Elevation (SRTM data),SRTMGL1: NASA Shuttle Radar Topography Mission Global 1 arc second V003 ,https://earthexplorer.usgs.gov,1 arc second,elevation in meters
+5.      Road density,OpenStreetMap data,,,
+6.    Solar resource and PV power potential,PV power potential ,https://globalsolaratlas.info/downloads/mongolia,resolution (pixel size) 30 arcsec (nominally 1 km),"PVOUT – Photovoltaic power potential [kWh/kWp] (YearlySum, longterm average of yearly summaries)"
+7.      Air quality,"Global Annual PM2.5 Grids from MODIS, MISR and SeaWiFS Aerosol Optical Depth (AOD) with GWR, v1 (2016)",http://sedac.ciesin.columbia.edu/data/set/sdei-global-annual-gwr-pm2-5-modis-misr-seawifs-aod,The raster grids have a grid cell resolution of 0.01 degrees,floating point values estimating PM 2.5 concentrations
+"8.      Surface temperature, heat island mapping","Dataset:
+Chakraborty, Tirthankar; Lee, Xuhui (2018), “Global UHI data table”, Mendeley Data, v1
+http://dx.doi.org/10.17632/h9pfd42fv9.1
+
+Paper:
+T. Chakraborty, X. Lee, ""A simplified urban-extent algorithm to characterize surface urban heat islands on a global scale and examine vegetation control on their spatiotemporal variability"", International Journal of Applied Earth Observation and Geoinformation. 74, 269-280, 2019.",https://yceo.yale.edu/research/global-surface-uhi-explorer, 1 km resolution ,annual mean daytime UHI (Celsius)
+9.      Pluvial/fluvial flooding,SSBN data ,,,
+10.  Coastal flooding,SSBN data ,,,
+11.  Landslides,"Global Landslide Susceptibility Map   citation: Stanley, T., and D. B. Kirschbaum (2017), A heuristic approach to global landslide susceptibility mapping, Nat. Hazards, 1–20, doi:10.1007/s11069-017-2757-y. Link to article: http://link.springer.com/article/10.1007%2Fs11069-017-2757-y",https://pmm.nasa.gov/applications/global-landslide-model,resolution (pixel size) 30 arcsec (nominally 1 km),5 susceptibility categories: numerical value from 1 (very low) to 5 (very high)
+12.1  Earthquakes/seismic hazard,"Global Earthquake Model (GEM) Global Seismic Hazard Map.   M. Pagani, J. Garcia-Pelaez, R. Gee, K. Johnson, V. Poggi, R. Styron, G. Weatherill, M. Simionato, D. Viganò, L. Danciu, D. Monelli (2018). Global Earthquake Model (GEM) Seismic Hazard Map (version 2018.1 - December 2018), DOI: 10.13117/GEM-GLOBAL-SEISMIC-HAZARD-MAP-2018.1This work is licensed under the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA): https://creativecommons.org/licenses/by-nc-sa/4.0/.",https://www.globalquakemodel.org/gem," The map was created by collating maps computed using national and regional probabilistic seismic hazard models developed by various institutions and projects, and by GEM
+Foundation scientists.  A smoothing methodology was applied to homogenise hazard values along the model borders. ","The Global Earthquake Model (GEM) Global Seismic Hazard Map (version 2018.1) depicts the geographic distribution of the Peak Ground Acceleration (PGA) with a 10% probability of being exceeded in 50 years, computed for reference rock conditions (shear wave velocity, VS30, of 760-800 m/s). "
+12.2  Earthquakes/seismic risk,"Global Earthquake Model (GEM) Global Seismic Risk Map.   V. Silva, D. Amo-Oduro, A. Calderon, J. Dabbeek, V. Despotaki, L. Martins, A. Rao, M. Simionato, D. Viganò, C. Yepes-Estrada, A. Acevedo, H. Crowley, N. Horspool, K. Jaiswal, M. Journeay, M. Pittore (2018). Global Earthquake Model (GEM) Seismic Risk Map (version 2018.1), DOI: 10.13117/GEM-GLOBAL-SEISMIC-RISK-MAP- 2018. This work is licensed under the terms of the Creative Commons Attribution- NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA).",https://www.globalquakemodel.org/gem,"0.30 x 0.34 decimal degrees (approximately 1,000 km2 at the equator)","The Global Seismic Risk Map (v2018.1) presents the geographic distribution of average annual loss (USD) normalised by the average construction costs of the respective country (USD/m2) due to ground shaking in the residential, commercial and industrial building stock, considering contents, structural and non-structural components."
