@@ -6,6 +6,23 @@ Processing a city scan first involves making sure you have the necessary source 
 
 Your City Scan directory should look like:
 
+```bash
+├── city_scan
+    ├── 01_population
+    ├── 02_urban_change
+    ├── 03_landcover
+    ├── 04_elevation
+    ├── 06_solar
+    ├── 07_air_quality
+    ├── 08_uhi
+    ├── 11_landslides
+    ├── 12_earthquakes
+    ├── admin
+    ├── cityscan.py
+    └── output
+```
+
+However, there are global data sets that can reside in different locations. The CityScan python script can read from a yaml configuration folder that specifies where the 02_urban_change, 03_Africa_20m_landcover, 03_landcover, 07_air_quality, and 11_landslides directories are located. There are two examples in this repo named 'global_data_config_personal.yml; and 'global_data_config_office.yml'.
 
 ```bash
 ├── global_data_sets
@@ -27,23 +44,7 @@ Your City Scan directory should look like:
             ├── gwr_pm25_2016.tif.ovr
     ├── 11_landslides
         ├── global_landslides.tif
-├── city_scan
-    ├── 01_population
-    │   ├── {insert your country WorldPOP tif here}
-    ├── 02_urban_change
-    ├── 03_landcover
-    ├── 04_elevation
-    ├── 06_solar
-    ├── 07_air_quality
-    ├── 08_uhi
-    ├── 11_landslides
-        ├── {insert your global landslides tif here}
-    ├── 12_earthquakes
-    ├── admin
-    ├── cityscan.py
-    └── output
 ```
-
 
 ## How to retrieve datasets:
 

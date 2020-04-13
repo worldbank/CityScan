@@ -16,6 +16,14 @@ import glob
 from osgeo import gdal
 import geopandas as gpd
 
+import yaml
+
+# load configuration file, this files stores the file locations for the global data files
+with open("./global_data_config_personal.yml", "r") as ymlfile:
+    cfg = yaml.load(ymlfile)
+
+print(cfg)
+
 #print('Number of arguments:', len(sys.argv), 'arguments.')
 #print('Argument List:', str(sys.argv))
 
@@ -63,7 +71,8 @@ ghsl_urban_change_file = 'test'
 #     urban_change_file = name
 
 #for name in glob.glob('../../GHS_BUILT_LDSMT_GLOBE_R2015B_3857_38_v1_0/*.vrt'):
-for name in glob.glob('../global_data_sets/02_urban_change/*.vrt'):
+#for name in glob.glob('../global_data_sets/02_urban_change/*.vrt'):
+for name in glob.glob(cfg.02_urban_change + '*.vrt'):
     print('inside glob')
     print(name)
     ghsl_urban_change_file = name
@@ -186,9 +195,9 @@ clipdata_urban_change(admin_folder, ghsl_urban_change_file, output_folder, '02_u
 
 #03 land cover
 if africa == 1:
-  clipdata(admin_folder, '../global_data_sets/03_Africa_20m_landcover/ESACCI-LC-L4-LC10-Map-20m-P1Y-2016-v1.0.tif', output_folder, '03_landcover')
+  clipdata(admin_folder, cfg.03_Africa_20m_landcover + 'ESACCI-LC-L4-LC10-Map-20m-P1Y-2016-v1.0.tif', output_folder, '03_landcover')
 else:
-  clipdata(admin_folder, '../global_data_sets/03_landcover/ESACCI-LC-L4-LCCS-Map-300m-P1Y-2015-v2.0.7.tif', output_folder, '03_landcover')
+  clipdata(admin_folder, cfg.03_landcover + 'ESACCI-LC-L4-LCCS-Map-300m-P1Y-2015-v2.0.7.tif', output_folder, '03_landcover')
 
 #04 elevation
 clipdata(admin_folder, elevation_file, output_folder, '04_elevation')
@@ -197,8 +206,8 @@ clipdata(admin_folder, elevation_file, output_folder, '04_elevation')
 clipdata(admin_folder, solar_file, output_folder, '06_solar')
 
 #07 air quality
-clipdata(admin_folder, '../global_data_sets/07_air_quality/sdei-global-annual-gwr-pm2-5-modis-misr-seawifs-aod-2016-geotiff/gwr_pm25_2016.tif', output_folder, '07_air_quality')
+clipdata(admin_folder, cfg.07_air_quality + 'sdei-global-annual-gwr-pm2-5-modis-misr-seawifs-aod-2016-geotiff/gwr_pm25_2016.tif', output_folder, '07_air_quality')
 
 #11 landslides
-clipdata(admin_folder, '../global_data_sets/11_landslides/global_landslides.tif', output_folder, '11_landslides')
+clipdata(admin_folder, cfg.11_landslides + 'global_landslides.tif', output_folder, '11_landslides')
 
