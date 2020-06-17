@@ -1,0 +1,6 @@
+Annual daytime UHI: 3.57 °C
+Annual nightime UHI: 0.01 °C
+Summer daytime UHI: 2.69 °C
+Summer nighttime UHI: -0.31 °C
+Winter daytime UHI: 3.70 °C
+Winter nighttime UHI: 0.33 °C

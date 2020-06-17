@@ -1,0 +1,5 @@
+02_urban_change: '../global_data_sets/02_urban_change/'
+03_Africa_20m_landcover: '../global_data_sets/03_Africa_20m_landcover/'
+03_landcover: '../global_data_sets/03_landcover/'
+07_air_quality: '../global_data_sets/07_air_quality/'
+11_landslides: '../global_data_sets/11_landslides/'
