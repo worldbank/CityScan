@@ -1,8 +1,0 @@
-Lat: 46.57
-Lon: 26.91
-Annual daytime UHI: 0.62 °C
-Annual nightime UHI: 0.55 °C
-Summer daytime UHI: 1.25 °C
-Summer nighttime UHI: 0.62 °C
-Winter daytime UHI: 0.56 °C
-Winter nighttime UHI: 0.53 °C

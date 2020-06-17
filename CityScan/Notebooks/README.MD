@@ -1,1 +1,0 @@
-These notebooks are used to explore and implement the CityScan project
