@@ -54,7 +54,7 @@ Go to find the population datasets from WorldPop (https://www.worldpop.org/proje
 
 ## 02_urban_change
 
-GHS-BUILT data contains a multitemporal information layer on built-up presence as derived from Landsat image collections (GLS1975, GLS1990, GLS2000, and ad-hoc Landsat 8 collection 2013/2014). Do to the download page (https://ghsl.jrc.ec.europa.eu/download.php?ds=bu) and download the global dataset. They now have the option to download tiles, so you can try just downloading a tile that covers your AOI as well. Choose the Multitemporal, 30m resolution, and Mercator projected dataset. This file should be saved within the global_data_sets folder, within the 02_urban_change folder.
+GHS-BUILT data contains a multitemporal information layer on built-up presence as derived from Landsat image collections (GLS1975, GLS1990, GLS2000, and ad-hoc Landsat 8 collection 2013/2014). Go to the download page (https://ghsl.jrc.ec.europa.eu/download.php?ds=bu) and download the global dataset. They now have the option to download tiles, so you can try just downloading a tile that covers your AOI as well. Choose the Multitemporal, 30m resolution, and Mercator projected dataset. This file should be saved within the global_data_sets folder, within the 02_urban_change folder.
 
 ## 03_landcover
 
