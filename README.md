@@ -72,7 +72,7 @@ Solar resource and PV power potential data can be acquired from the Global Solar
 
 The Global Annual PM2.5 Grids from MODIS, MISR and SeaWiFS Aerosol Optical Depth (AOD) with GWR, 1998-2016 consist of annual concentrations (micrograms per cubic meter) of ground-level fine particulate matter (PM2.5), with dust and sea-salt removed. The 2016 dataset is downloaded from the following site: https://sedac.ciesin.columbia.edu/data/set/sdei-global-annual-gwr-pm2-5-modis-misr-seawifs-aod/data-download. This file should be saved within the global_data_sets folder, within the 07_air_quality folder.
 
-## 08_uhi
+## 08_uhi (depreciated, run a different way now)
 
 The Global Surface UHI Explorer (https://yceo.users.earthengine.app/view/uhimap) is used to visualize urban heat islands. The UHI dataset was created based on the simplified urban-extent (SUE) algorithm detailed in Chakraborty and Lee, 2018. Screenshots are taken of the AOI using the Global Surface UHI Explorer. The screenshots can be used in reports and sourced appropriately.
 
