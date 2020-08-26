@@ -19,7 +19,7 @@ import geopandas as gpd
 import yaml
 
 # load configuration file, this files stores the file locations for the global data files
-with open("./global_data_config_personal.yml", "r") as ymlfile:
+with open("./global_data_config_personal_windows.yml", "r") as ymlfile:
     cfg = yaml.load(ymlfile)
 
 print('print cfg file')
@@ -73,6 +73,15 @@ ghsl_urban_change_file = 'test'
 
 #for name in glob.glob('../../GHS_BUILT_LDSMT_GLOBE_R2015B_3857_38_v1_0/*.vrt'):
 #for name in glob.glob('../global_data_sets/02_urban_change/*.vrt'):
+print('print urban change files')
+print(cfg["02_urban_change"])
+
+"""
+for name in glob.glob(cfg["02_urban_change"] + '*.vrt'):
+    print('inside 02_urban_change glob 1')
+    print(name)
+    #ghsl_urban_change_file = name
+"""
 for name in glob.glob(cfg["02_urban_change"] + '*.vrt'):
     print('inside glob')
     print(name)
@@ -102,6 +111,7 @@ else:
 #solar
 solar_file = 'test'
 
+print('go into solar glob')
 for name in glob.glob('./06_solar/*/PVOUT.tif'):
     print('inside solar glob')
     print(name)
@@ -154,16 +164,17 @@ def clipdata_urban_change(admin_folder, ghsl_urban_change_file, output_folder, p
                   #remove temporary files
                   if os.path.exists(output_3857_raster):
                     os.remove(output_3857_raster)
-                #remove temporary files
-                print('admin_file_3857_shp keyword')
-                print(admin_file_3857_shp[:-3])
-                fileList = glob.glob(admin_file_3857_shp[:-3]+'*', recursive = True)
-                admin_file_3857_shp_keyword = admin_file_3857_shp
-                for filePath in fileList:
-                  try:
-                      os.remove(filePath)
-                  except OSError:
-                      print("Error while deleting file")
+            #remove temporary files
+            print('admin_file_3857_shp keyword')
+            print(admin_file_3857_shp[:-3])
+            fileList = glob.glob(admin_file_3857_shp[:-3]+'*', recursive = True)
+            admin_file_3857_shp_keyword = admin_file_3857_shp
+            for filePath in fileList:
+              try:
+                  os.remove(filePath)
+              except OSError as e:
+                  print("Error while deleting file")
+                  print("Failed with:", e.strerror) # look what it says
 
 def clipdata(admin_folder, input_raster, output_folder, prepend_file_text):
 
@@ -210,5 +221,5 @@ clipdata(admin_folder, solar_file, output_folder, '06_solar')
 clipdata(admin_folder, cfg["07_air_quality"] + 'sdei-global-annual-gwr-pm2-5-modis-misr-seawifs-aod-2016-geotiff/gwr_pm25_2016.tif', output_folder, '07_air_quality')
 
 #11 landslides
-clipdata(admin_folder, cfg["11_landslides"] + 'global_landslides.tif', output_folder, '11_landslides')
+clipdata(admin_folder, cfg["11_landslides"] + 'suscV1_1.tif', output_folder, '11_landslides')
 
