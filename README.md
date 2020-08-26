@@ -62,7 +62,13 @@ ECA has a global land cover maps at 300m spatial resolution (http://maps.elie.uc
 
 ## 04_elevation
 
-NASA Shuttle Radar Topography Mission (SRTM) Global 1 arc second rasters can be downloaded from https://earthexplorer.usgs.gov. Log into the site and zoom into your AOI. An easy way to do this is to upload a Shapefile. However, you need to limit the shapefile to less than 30 points and it needs to be compressed. We recommend to draw a new simplified AOI shapefile, compress it, and upload the file to earthexplorer and search. Now browse the datasets, open the digital elevation menu, then the srtm menu, and finally check the box for the SRTM 1 Arc-Second Global dataset. Hit the Results button and download SRTM or SRTMs as GeoTIFF. If you download multiple SRTMs, merge them into one include 'merged' as part of the file name. Save the GeoTIFF inside the city_scan folder, within the 04_elevation folder.
+NASA Shuttle Radar Topography Mission (SRTM) Global 1 arc second rasters can be downloaded from https://earthexplorer.usgs.gov. Log into the site and zoom into your AOI. An easy way to do this is to upload a Shapefile. However, you need to limit the shapefile to less than 30 points and it needs to be compressed. We recommend to draw a new simplified AOI shapefile, compress it, and upload the file to earthexplorer and search. Now browse the datasets, open the digital elevation menu, then the srtm menu, and finally check the box for the SRTM 1 Arc-Second Global dataset. Hit the Results button and download SRTM or SRTMs as GeoTIFF. If you download multiple SRTMs, merge them into one include 'merged' as part of the file name. There is a preference for the merged raster to have borders that are transparent instead of black, and this is hard to achieve using the merge command in QGIS 3. However, you can do this with the following GDAL command from the command line:
+
+```
+gdalwarp -srcnodata 0 -dstalpha -ot Float32 input1.tif input2.tif input3.tif output.tif
+```
+
+Save the GeoTIFF inside the city_scan folder, within the 04_elevation folder.
 
 ## 06_solar
 
