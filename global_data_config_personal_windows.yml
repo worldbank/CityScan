@@ -1,0 +1,5 @@
+02_urban_change: '../global_data_sets/02_urban_change/GHS_BUILT_LDSMT_GLOBE_R2018A_3857_30_V2_0/V2-0/'
+03_Africa_20m_landcover: '../global_data_sets/03_Africa_20m_landcover/ESACCI-LC-L4-LC10-Map-20m-P1Y-2016-v1.0/'
+03_landcover: '../global_data_sets/03_landcover/'
+07_air_quality: '../global_data_sets/07_air_quality/'
+11_landslides: '../global_data_sets/11_landslides/'

@@ -54,15 +54,21 @@ Go to find the population datasets from WorldPop (https://www.worldpop.org/proje
 
 ## 02_urban_change
 
-GHS-BUILT data contains a multitemporal information layer on built-up presence as derived from Landsat image collections (GLS1975, GLS1990, GLS2000, and ad-hoc Landsat 8 collection 2013/2014). Do to the download page (https://ghsl.jrc.ec.europa.eu/download.php?ds=bu) and download the global dataset. They now have the option to download tiles, so you can try just downloading a tile that covers your AOI as well. Choose the Multitemporal, 30m resolution, and Mercator projected dataset. This file should be saved within the global_data_sets folder, within the 02_urban_change folder.
+GHS-BUILT data contains a multitemporal information layer on built-up presence as derived from Landsat image collections (GLS1975, GLS1990, GLS2000, and ad-hoc Landsat 8 collection 2013/2014). Go to the download page (https://ghsl.jrc.ec.europa.eu/download.php?ds=bu) and download the global dataset. They now have the option to download tiles, so you can try just downloading a tile that covers your AOI as well. Choose the Multitemporal, 30m resolution, and Mercator projected dataset. This file should be saved within the global_data_sets folder, within the 02_urban_change folder.
 
 ## 03_landcover
 
-ECA has a global land cover maps at 300m spatial resolution (http://maps.elie.ucl.ac.be/CCI/viewer/download.php). Download the most recent 2015 Land Cover map in .tif form. The title of the file should be: ESACCI-LC-L4-LCCS-Map-300m-P1Y-2015-v2.0.7.tif. This file should be saved within the 03_landcover folder, which is inside the global_data_sets folder. If the city scan is in in Africa, then the higher resolution Africa 20m land cover dataset titled: ESACCI-LC-L4-LC10-Map-20m-P1Y-2016-v1.0.tif. This file should be saved within the global_data_sets folder, within the 03_Africa_20m_landcover folder.
+ECA has a global land cover maps at 300m spatial resolution (http://maps.elie.ucl.ac.be/CCI/viewer/download.php). Download the most recent 2015 Land Cover map in .tif form. The title of the file should be: ESACCI-LC-L4-LCCS-Map-300m-P1Y-2015-v2.0.7.tif. This file should be saved within the 03_landcover folder, which is inside the global_data_sets folder. If the city scan is in in Africa, then the higher resolution Africa 20m land cover dataset should be used, and this can be downloaded here (http://2016africalandcover20m.esrin.esa.int/). This title of this file should be: ESACCI-LC-L4-LC10-Map-20m-P1Y-2016-v1.0.tif. This file should be saved within the global_data_sets folder, within the 03_Africa_20m_landcover folder.
 
 ## 04_elevation
 
-NASA Shuttle Radar Topography Mission (SRTM) Global 1 arc second rasters can be downloaded from https://earthexplorer.usgs.gov. Log into the site and zoom into your AOI. An easy way to do this is to upload a Shapefile. However, you need to limit the shapefile to less than 30 points and it needs to be compressed. We recommend to draw a new simplified AOI shapefile, compress it, and upload the file to earthexplorer and search. Now browse the datasets, open the digital elevation menu, then the srtm menu, and finally check the box for the SRTM 1 Arc-Second Global dataset. Hit the Results button and download SRTM or SRTMs as GeoTIFF. If you download multiple SRTMs, merge them into one include 'merged' as part of the file name. Save the GeoTIFF inside the city_scan folder, within the 04_elevation folder.
+NASA Shuttle Radar Topography Mission (SRTM) Global 1 arc second rasters can be downloaded from https://earthexplorer.usgs.gov. Log into the site and zoom into your AOI. An easy way to do this is to upload a Shapefile. However, you need to limit the shapefile to less than 30 points and it needs to be compressed. We recommend to draw a new simplified AOI shapefile, compress it, and upload the file to earthexplorer and search. Now browse the datasets, open the digital elevation menu, then the srtm menu, and finally check the box for the SRTM 1 Arc-Second Global dataset. Hit the Results button and download SRTM or SRTMs as GeoTIFF. If you download multiple SRTMs, merge them into one include 'merged' as part of the file name. There is a preference for the merged raster to have borders that are transparent instead of black, and we achieve this by creating a transparent alpha band. This is hard to achieve using the merge command in QGIS 3. However, you can do this with the following GDAL command from the command line:
+
+```
+gdalwarp -srcnodata 0 -dstalpha -ot Float32 input1.tif input2.tif input3.tif output.tif
+```
+
+Save the GeoTIFF inside the city_scan folder, within the 04_elevation folder.
 
 ## 06_solar
 
@@ -72,7 +78,7 @@ Solar resource and PV power potential data can be acquired from the Global Solar
 
 The Global Annual PM2.5 Grids from MODIS, MISR and SeaWiFS Aerosol Optical Depth (AOD) with GWR, 1998-2016 consist of annual concentrations (micrograms per cubic meter) of ground-level fine particulate matter (PM2.5), with dust and sea-salt removed. The 2016 dataset is downloaded from the following site: https://sedac.ciesin.columbia.edu/data/set/sdei-global-annual-gwr-pm2-5-modis-misr-seawifs-aod/data-download. This file should be saved within the global_data_sets folder, within the 07_air_quality folder.
 
-## 08_uhi
+## 08_uhi (depreciated, run a different way now)
 
 The Global Surface UHI Explorer (https://yceo.users.earthengine.app/view/uhimap) is used to visualize urban heat islands. The UHI dataset was created based on the simplified urban-extent (SUE) algorithm detailed in Chakraborty and Lee, 2018. Screenshots are taken of the AOI using the Global Surface UHI Explorer. The screenshots can be used in reports and sourced appropriately.
 
