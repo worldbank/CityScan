@@ -50,7 +50,7 @@ However, there are global data sets that can reside in different locations. The 
 
 ## 01_population
 
-Go to find the population datasets from WorldPop (https://www.worldpop.org/project/categories?id=3). Click on the Individual countries 2000-2020 link and find the country and year you are interested in. The dataset page has a preview of the data and a summary. Not that the summary states the mapping approach. We are interested in the mapping approach that uses Random Forest-based dasymetric redistribution. You can then download the dataset and save the .tif inside city_scan folder, within the 01_population folder.
+Go to find the population datasets from WorldPop (https://www.worldpop.org/project/categories?id=3). Click on the Individual countries 2000-2020 link and find the country and year you are interested in. The dataset page has a preview of the data and a summary. Note that the summary states the mapping approach. We are interested in the mapping approach that uses Random Forest-based dasymetric redistribution. You can then download the dataset and save the .tif inside city_scan folder, within the 01_population folder.
 
 ## 02_urban_change
 
