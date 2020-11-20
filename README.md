@@ -72,7 +72,7 @@ Save the GeoTIFF inside the city_scan folder, within the 04_elevation folder.
 
 ## 06_solar
 
-Solar resource and PV power potential data can be acquired from the Global Solar Atlas (https://globalsolaratlas.info/downloads/). Pick your country of interest and download the appropiate GIS data. You can download the GeoTIFF of the Longterm yearly/monthly average of daily totals (LTAym_AvgDailyTotals). Download this folder and unzip inside the city_scan folder, within the 06_solar folder.
+Solar resource and PV power potential data can be acquired from the Global Solar Atlas (https://globalsolaratlas.info/downloads/). Pick your country of interest and download the appropiate GIS data. You can download the GeoTIFF of the Longterm yearly/monthly average (YearlyMonthlyTotals) for consistency. Download this folder and unzip inside the city_scan folder, within the 06_solar folder.
 
 ## 07_air_quality
 
