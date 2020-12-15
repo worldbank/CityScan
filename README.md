@@ -50,7 +50,7 @@ However, there are global data sets that can reside in different locations. The 
 
 ## 01_population
 
-Go to find the population datasets from WorldPop (https://www.worldpop.org/project/categories?id=3). Click on the Individual countries 2000-2020 link and find the country and year you are interested in. The dataset page has a preview of the data and a summary. Not that the summary states the mapping approach. We are interested in the mapping approach that uses Random Forest-based dasymetric redistribution. You can then download the dataset and save the .tif inside city_scan folder, within the 01_population folder.
+Go to find the population datasets from WorldPop (https://www.worldpop.org/project/categories?id=3). Click on the Individual countries 2000-2020 link and find the country and year you are interested in. The dataset page has a preview of the data and a summary. Note that the summary states the mapping approach. We are interested in the mapping approach that uses Random Forest-based dasymetric redistribution. You can then download the dataset and save the .tif inside city_scan folder, within the 01_population folder.
 
 ## 02_urban_change
 
@@ -72,7 +72,7 @@ Save the GeoTIFF inside the city_scan folder, within the 04_elevation folder.
 
 ## 06_solar
 
-Solar resource and PV power potential data can be acquired from the Global Solar Atlas (https://globalsolaratlas.info/downloads/). Pick your country of interest and download the appropiate GIS data. You can download the GeoTIFF of the Longterm yearly/monthly average of daily totals (LTAym_AvgDailyTotals). Download this folder and unzip inside the city_scan folder, within the 06_solar folder.
+Solar resource and PV power potential data can be acquired from the Global Solar Atlas (https://globalsolaratlas.info/downloads/). Pick your country of interest and download the appropiate GIS data. You can download the GeoTIFF of the Longterm yearly/monthly average (YearlyMonthlyTotals) for consistency. Download this folder and unzip inside the city_scan folder, within the 06_solar folder.
 
 ## 07_air_quality
 
