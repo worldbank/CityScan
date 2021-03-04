@@ -182,9 +182,7 @@ def clipdata_wsf(admin_folder, input_raster, output_folder, prepend_file_text):
         if file.endswith(".shp"):  
             print(file)
             
-            features_gdf = gpd.read_file(admin_folder + '/' + file)
-            print('print admin_file crs')
-            print(features_gdf.crs)
+            features_gdf = gpd.read_file(r"C:\Users\war-machine\Documents\world_bank_work\cityscan\niamey_niger\admin\Niamey_AOI.shp")
 
             # automatically find utm zone
             avg_lng = features_gdf["geometry"].unary_union.centroid.x
@@ -212,7 +210,7 @@ def clipdata_wsf(admin_folder, input_raster, output_folder, prepend_file_text):
                 with rasterio.open(output_4326_raster_clipped, "w", **out_meta) as dest:
                     dest.write(out_image)
                     
-                # 3. need to transform the clipped ghsl to utm
+                # 3. need to transform the clipped ghsl to 4326
                 output_utm_raster_clipped = output_folder + prepend_file_text + "_utm_clipped.tif"
                 gdal.Warp(output_utm_raster_clipped, output_4326_raster_clipped, dstSRS=utm_crs)
                 
@@ -228,7 +226,8 @@ def clipdata_wsf(admin_folder, input_raster, output_folder, prepend_file_text):
                     for year in range(1985, 2016):
                         #print(year)
                         # resolution of each pixel about 30 sq meters. Multiply by pixelSize and Divide by 1,000,000 to get sq km
-                        year_dict[year] = np.count_nonzero(array == year) * pixelSizeX / 1000000
+                        #year_dict[year] = np.count_nonzero(array == year)
+                        year_dict[year] = np.count_nonzero(array == year) * pixelSizeX * pixelSizeX / 1000000
                         
                     # save CSV
                     import csv
@@ -293,6 +292,7 @@ print('starting processing')
 clipdata(admin_folder, pop_file, output_folder, prepend_file_text)
 
 #02 urban change
+#clipdata_urban_change(admin_folder, ghsl_urban_change_file, output_folder, '02_urban_change')
 clipdata_wsf(admin_folder, ghsl_urban_change_file, output_folder, '02_urban_change')
 
 #03 land cover
