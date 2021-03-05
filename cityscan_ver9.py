@@ -182,7 +182,10 @@ def clipdata_wsf(admin_folder, input_raster, output_folder, prepend_file_text):
         if file.endswith(".shp"):  
             print(file)
             
-            features_gdf = gpd.read_file(r"C:\Users\war-machine\Documents\world_bank_work\cityscan\niamey_niger\admin\Niamey_AOI.shp")
+            features_gdf = gpd.read_file(admin_folder + '/' + file)
+            print('print admin_file crs')
+            print(features_gdf.crs)
+
 
             # automatically find utm zone
             avg_lng = features_gdf["geometry"].unary_union.centroid.x
@@ -210,7 +213,7 @@ def clipdata_wsf(admin_folder, input_raster, output_folder, prepend_file_text):
                 with rasterio.open(output_4326_raster_clipped, "w", **out_meta) as dest:
                     dest.write(out_image)
                     
-                # 3. need to transform the clipped ghsl to 4326
+                # 3. need to transform the clipped ghsl to utm
                 output_utm_raster_clipped = output_folder + prepend_file_text + "_utm_clipped.tif"
                 gdal.Warp(output_utm_raster_clipped, output_4326_raster_clipped, dstSRS=utm_crs)
                 
