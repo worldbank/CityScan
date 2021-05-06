@@ -2,7 +2,7 @@
 
 Collection of data processing scripts to generate the baseline raster data for the CityScan project
 
-Processing a city scan first involves making sure you have the necessary source data downloaded and saved in the correct locations, as well as named appropiately. You also want to have the AOI of your region. Save the AOI in the epsg:4326 projection and inside the admin directory. The python city scan script can then be run to clip the source data to the appropiate AOI. All of the outputs will be saved in the 'output directory'. Note that for 08_uhi and 12_earthquakes, only screenshots of online viewers are taken.
+Processing a city scan first involves making sure you have the necessary source data downloaded and saved in the correct locations, as well as named appropiately. You also want to have the AOI shapefile of your region. Save the AOI in the epsg:4326 projection and inside the admin directory. The python city scan script can then be run to clip the source data to the appropiate AOI. All of the outputs will be saved in the 'output' directory. Note that for 08_uhi and 12_earthquakes, only screenshots of online viewers are taken.
 
 Your City Scan directory should look like:
 
@@ -54,7 +54,9 @@ Go to find the population datasets from WorldPop (https://www.worldpop.org/proje
 
 ## 02_urban_change
 
-GHS-BUILT data contains a multitemporal information layer on built-up presence as derived from Landsat image collections (GLS1975, GLS1990, GLS2000, and ad-hoc Landsat 8 collection 2013/2014). Go to the download page (https://ghsl.jrc.ec.europa.eu/download.php?ds=bu) and download the global dataset. They now have the option to download tiles, so you can try just downloading a tile that covers your AOI as well. Choose the Multitemporal, 30m resolution, and Mercator projected dataset. This file should be saved within the global_data_sets folder, within the 02_urban_change folder.
+The preference is to use the WSF-evolution dataset. This dataset will be provided by the project lead. WSF-evolution outlines the growth of settlements extent globally at 30m spatial resolution and high temporal frequency from 1985 to 2015. This file should be saved within the global_data_sets folder, within the 02_urban_change folder. 
+
+If WSF-evolution is not available then GHS-built will be used. GHS-BUILT data contains a multitemporal information layer on built-up presence as derived from Landsat image collections (GLS1975, GLS1990, GLS2000, and ad-hoc Landsat 8 collection 2013/2014). Go to the download page (https://ghsl.jrc.ec.europa.eu/download.php?ds=bu) and download the global dataset. They now have the option to download tiles, so you can try just downloading a tile that covers your AOI as well. Choose the Multitemporal, 30m resolution, and Mercator projected dataset. This file should be saved within the global_data_sets folder, within the 02_urban_change folder.
 
 ## 03_landcover
 
