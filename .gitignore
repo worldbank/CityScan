@@ -15,7 +15,7 @@ raster_processing/04_elevation/*
 raster_processing/06_solar/*
 raster_processing/07_air_quality/*
 raster_processing/08_uhi/*
-raster_processing/09_flooding/*
+raster_processing/09_flooding/*.txt
 raster_processing/11_landslides/*
 raster_processing/12_earthquakes/*
 raster_processing/admin/*
