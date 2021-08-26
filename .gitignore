@@ -19,6 +19,9 @@ raster_processing/11_landslides/*
 raster_processing/12_earthquakes/*
 raster_processing/admin/*
 raster_processing/output/*
+relative_wealth_index/admin/*
+relative_wealth_index/output/*
+relative_wealth_index/data/*
 road_network_analysis/admin/*
 road_network_analysis/data/*
 !*.gitkeep
