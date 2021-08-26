@@ -2,7 +2,6 @@
 accessibility_mapping/input_folder/*
 accessibility_mapping/output_folder/*
 accessibility_mapping/admin/*
-accessibility_mapping/old/*
 global_data_sets/02_urban_change/*
 global_data_sets/03_Africa_20m_landcover/*
 global_data_sets/03_landcover/*
@@ -15,10 +14,12 @@ raster_processing/04_elevation/*
 raster_processing/06_solar/*
 raster_processing/07_air_quality/*
 raster_processing/08_uhi/*
-raster_processing/09_flooding/*.txt
+raster_processing/09_flooding/*
 raster_processing/11_landslides/*
 raster_processing/12_earthquakes/*
 raster_processing/admin/*
 raster_processing/output/*
 road_network_analysis/admin/*
 road_network_analysis/data/*
+!*.gitkeep
+!*.md
