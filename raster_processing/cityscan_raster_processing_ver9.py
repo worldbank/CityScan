@@ -61,12 +61,12 @@ output_folder = './output/'
 
 ###### getting file names #########################
 # population
-pop_file = 'test'
+# pop_file = 'test'
 
-for name in glob.glob('./01_population/*.tif'):
-    print('inside glob')
-    print(name)
-    pop_file = name
+# for name in glob.glob('./01_population/*.tif'):
+#     print('inside glob')
+#     print(name)
+#     pop_file = name
 
 # urban_change
 ghsl_urban_change_file = 'test'
@@ -84,38 +84,38 @@ print(cfg["02_urban_change"])
 
 # elevation
 
-elevation_file = 'test'
+# elevation_file = 'test'
 
-tifCounter = len(glob.glob1('./04_elevation/', "*.tif"))
+# tifCounter = len(glob.glob1('./04_elevation/', "*.tif"))
 
-print('tifCounter, elevation files:')
-print(tifCounter)
+# print('tifCounter, elevation files:')
+# print(tifCounter)
 
-if tifCounter == 1:
-    for name in glob.glob('./04_elevation/*.tif'):
-        print('inside elevation glob single')
-        print(name)
-        elevation_file = name
-elif tifCounter == 0:
-    warnings.warn("there are no elevation files")
-else:
-    for name in glob.glob('./04_elevation/*merged.tif'):
-        print('inside elevation glob multiple')
-        print(name)
-        elevation_file = name
+# if tifCounter == 1:
+#     for name in glob.glob('./04_elevation/*.tif'):
+#         print('inside elevation glob single')
+#         print(name)
+#         elevation_file = name
+# elif tifCounter == 0:
+#     warnings.warn("there are no elevation files")
+# else:
+#     for name in glob.glob('./04_elevation/*merged.tif'):
+#         print('inside elevation glob multiple')
+#         print(name)
+#         elevation_file = name
 
-if elevation_file == 'test':
-    warnings.warn("Warning because there are multiple elevation files but no merged elevation file. Make sure to merge the elevation files and include the word 'merged' in the name of the file.")
+# if elevation_file == 'test':
+#     warnings.warn("Warning because there are multiple elevation files but no merged elevation file. Make sure to merge the elevation files and include the word 'merged' in the name of the file.")
 
 
 # solar
-solar_file = 'test'
+# solar_file = 'test'
 
-print('go into solar glob')
-for name in glob.glob('./06_solar/*/PVOUT.tif'):
-    print('inside solar glob')
-    print(name)
-    solar_file = name
+# print('go into solar glob')
+# for name in glob.glob('./06_solar/*/PVOUT.tif'):
+#     print('inside solar glob')
+#     print(name)
+#     solar_file = name
 
 # not used right now
 def clipdata_urban_change(admin_folder, ghsl_urban_change_file, output_folder, prepend_file_text):
@@ -307,35 +307,39 @@ def clipdata(admin_folder, input_raster, output_folder, prepend_file_text):
 print('starting processing')
 
 # 01 population
-clipdata(admin_folder, pop_file, output_folder, prepend_file_text)
+# clipdata(admin_folder, pop_file, output_folder, prepend_file_text)
 
 # 02 urban change
 # clipdata_urban_change(admin_folder, ghsl_urban_change_file, output_folder, '02_urban_change')
+print('02 urban change')
 clipdata_wsf(admin_folder, ghsl_urban_change_file,
              output_folder, '02_urban_change')
 
 # 03 land cover
-if africa == 1:
-    clipdata(admin_folder, cfg["03_Africa_20m_landcover"] +
-             'ESACCI-LC-L4-LC10-Map-20m-P1Y-2016-v1.0.tif', output_folder, '03_landcover')
-else:
-    clipdata(admin_folder, cfg["03_landcover"] +
-             'ESACCI-LC-L4-LCCS-Map-300m-P1Y-2015-v2.0.7.tif', output_folder, '03_landcover')
+# Update data source to use the new ESRI land cover data
+print('03 land cover')
+clipdata(admin_folder, cfg["03_landcover"] + '36M.tif', output_folder, '03_landcover')
+# if africa == 1:
+#     clipdata(admin_folder, cfg["03_Africa_20m_landcover"] +
+#              'ESACCI-LC-L4-LC10-Map-20m-P1Y-2016-v1.0.tif', output_folder, '03_landcover')
+# else:
+#     clipdata(admin_folder, cfg["03_landcover"] +
+#              'ESACCI-LC-L4-LCCS-Map-300m-P1Y-2015-v2.0.7.tif', output_folder, '03_landcover')
 
 # 04 elevation
-if tifCounter > 0:
-    clipdata(admin_folder, elevation_file, output_folder, '04_elevation')
+# if tifCounter > 0:
+#     clipdata(admin_folder, elevation_file, output_folder, '04_elevation')
 
 # 06 solar
-clipdata(admin_folder, solar_file, output_folder, '06_solar')
+# clipdata(admin_folder, solar_file, output_folder, '06_solar')
 
 # 07 air quality
-clipdata(admin_folder, cfg["07_air_quality"] +
-         'sdei-global-annual-gwr-pm2-5-modis-misr-seawifs-aod-2016-geotiff/gwr_pm25_2016.tif', output_folder, '07_air_quality')
+# clipdata(admin_folder, cfg["07_air_quality"] +
+#          'sdei-global-annual-gwr-pm2-5-modis-misr-seawifs-aod-2016-geotiff/gwr_pm25_2016.tif', output_folder, '07_air_quality')
 
 # 11 landslides
-clipdata(admin_folder, cfg["11_landslides"] +
-         'suscV1_1.tif', output_folder, '11_landslides')
+# clipdata(admin_folder, cfg["11_landslides"] +
+#          'suscV1_1.tif', output_folder, '11_landslides')
 
 
 
