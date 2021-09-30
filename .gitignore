@@ -2,6 +2,7 @@
 accessibility_mapping/input_folder/*
 accessibility_mapping/output_folder/*
 accessibility_mapping/admin/*
+accessibility_mapping/cache/*
 global_data_sets/02_urban_change/*
 global_data_sets/03_Africa_20m_landcover/*
 global_data_sets/03_landcover/*
@@ -23,6 +24,7 @@ relative_wealth_index/admin/*
 relative_wealth_index/output/*
 relative_wealth_index/data/*
 road_network_analysis/admin/*
+road_network_analysis/cache/*
 road_network_analysis/data/*
 !*.gitkeep
 !*.md
