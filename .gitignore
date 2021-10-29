@@ -24,6 +24,6 @@ relative_wealth_index/output/*
 relative_wealth_index/data/*
 road_network_analysis/admin/*
 road_network_analysis/data/*
-cache/
+*/cache/*
 !*.gitkeep
 !*.md

@@ -29,15 +29,6 @@ print(cfg)
 #print('Number of arguments:', len(sys.argv), 'arguments.')
 #print('Argument List:', str(sys.argv))
 
-# Africa has a difference land cover, higher res
-# potentially replaced with ESRI
-africa = 0
-if any("africa" in s for s in sys.argv):  # To add "africa" to sys.argv, type africa after script name in bash terminal
-    print('africa argument exists')
-    africa = 1
-else:
-    print('africa argument does not exist')
-
 admin_folder = './admin'
 
 for file in os.listdir(admin_folder):
@@ -82,30 +73,55 @@ print('print urban change files')
 print(cfg["02_urban_change"])
 
 
-# elevation
+# land cover
+land_cover_file = 'test'
 
-elevation_file = 'test'
+tifCounter = len(glob.glob1('./03_landcover/', "*.tif"))
 
-tifCounter = len(glob.glob1('./04_elevation/', "*.tif"))
-
-print('tifCounter, elevation files:')
+print('tifCounter, land cover files:')
 print(tifCounter)
 
 if tifCounter == 1:
-    for name in glob.glob('./04_elevation/*.tif'):
-        print('inside elevation glob single')
+    for name in glob.glob('./03_landcover/*.tif'):
+        print('inside land cover glob single')
         print(name)
-        elevation_file = name
+        landcover_file = name
 elif tifCounter == 0:
-    warnings.warn("there are no elevation files")
+    warnings.warn("there are no land cover files")
 else:
-    for name in glob.glob('./04_elevation/*merged.tif'):
-        print('inside elevation glob multiple')
+    for name in glob.glob('./03_landcover/*merged.tif'):
+        print('inside land cover glob multiple')
         print(name)
-        elevation_file = name
+        landcover_file = name
 
-if elevation_file == 'test':
-    warnings.warn("Warning because there are multiple elevation files but no merged elevation file. Make sure to merge the elevation files and include the word 'merged' in the name of the file.")
+if landcover_file == 'test':
+    warnings.warn("Warning because there are multiple land cover files but no merged land cover file. Make sure to merge the land cover files and include the word 'merged' in the name of the file.")
+
+
+# elevation
+
+# elevation_file = 'test'
+
+# tifCounter = len(glob.glob1('./04_elevation/', "*.tif"))
+
+# print('tifCounter, elevation files:')
+# print(tifCounter)
+
+# if tifCounter == 1:
+#     for name in glob.glob('./04_elevation/*.tif'):
+#         print('inside elevation glob single')
+#         print(name)
+#         elevation_file = name
+# elif tifCounter == 0:
+#     warnings.warn("there are no elevation files")
+# else:
+#     for name in glob.glob('./04_elevation/*merged.tif'):
+#         print('inside elevation glob multiple')
+#         print(name)
+#         elevation_file = name
+
+# if elevation_file == 'test':
+#     warnings.warn("Warning because there are multiple elevation files but no merged elevation file. Make sure to merge the elevation files and include the word 'merged' in the name of the file.")
 
 
 # solar
@@ -315,16 +331,12 @@ clipdata_wsf(admin_folder, ghsl_urban_change_file,
              output_folder, '02_urban_change')
 
 # 03 land cover
-if africa == 1:
-    clipdata(admin_folder, cfg["03_Africa_20m_landcover"] +
-             'ESACCI-LC-L4-LC10-Map-20m-P1Y-2016-v1.0.tif', output_folder, '03_landcover')
-else:
-    clipdata(admin_folder, cfg["03_landcover"] +
-             'ESACCI-LC-L4-LCCS-Map-300m-P1Y-2015-v2.0.7.tif', output_folder, '03_landcover')
+if tifCounter > 0:
+    clipdata(admin_folder, landcover_file, output_folder, '03_landcover')
 
 # 04 elevation
-if tifCounter > 0:
-    clipdata(admin_folder, elevation_file, output_folder, '04_elevation')
+# if tifCounter > 0:
+#     clipdata(admin_folder, elevation_file, output_folder, '04_elevation')
 
 # 06 solar
 clipdata(admin_folder, solar_file, output_folder, '06_solar')
@@ -340,6 +352,6 @@ clipdata(admin_folder, cfg["11_landslides"] +
 
 
 # NOT done by this script
-# 08 uhi: screenshot
-# 09 flooding: done by Andrii
+# 08 uhi: GEE
+# 09 flooding: toolbox
 # 12 earthquakes: screenshot
