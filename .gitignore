@@ -17,6 +17,7 @@ raster_processing/08_uhi/*
 raster_processing/09_flooding/*
 raster_processing/11_landslides/*
 raster_processing/12_earthquakes/*
+raster_processing/13_imperviousness/*
 raster_processing/admin/*
 raster_processing/output/*
 relative_wealth_index/admin/*
