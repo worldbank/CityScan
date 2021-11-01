@@ -133,6 +133,16 @@ for name in glob.glob('./06_solar/*/PVOUT.tif'):
     print(name)
     solar_file = name
 
+# imperviousness
+imperv_file = 'test'
+
+print('go into imperviousness glob')
+for name in glob.glob('./13_imperviousness/*imperviousness*.tif'):
+    print('inside imperviousness glob')
+    print(name)
+    imperv_file = name
+
+
 # not used right now
 def clipdata_urban_change(admin_folder, ghsl_urban_change_file, output_folder, prepend_file_text):
     for file in os.listdir(admin_folder):
@@ -349,6 +359,8 @@ clipdata(admin_folder, cfg["07_air_quality"] +
 clipdata(admin_folder, cfg["11_landslides"] +
          'suscV1_1.tif', output_folder, '11_landslides')
 
+# 13 imperviousness
+clipdata(admin_folder, imperv_file, output_folder, '13_imperviousness')
 
 
 # NOT done by this script
