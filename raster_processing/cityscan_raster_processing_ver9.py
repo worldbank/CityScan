@@ -269,7 +269,7 @@ def clipdata_wsf(admin_folder, input_raster, output_folder, prepend_file_text):
                     # save CSV
                     import csv
                     with open(output_folder + '/' + prepend_file_text + "_stats_%s.csv" % file[:-4], 'w') as f:
-                        f.write("year, sq km built\n")
+                        f.write("year,sq km built\n")
                         for key in year_dict.keys():
                             f.write("%s,%s\n" % (key, year_dict[key]))
 
