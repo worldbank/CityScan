@@ -62,7 +62,7 @@ for name in glob.glob('./01_population/*.tif'):
 # urban_change
 ghsl_urban_change_file = 'test'
 
-for name in glob.glob('./02_urban_change/*evolution_30m.tif'):
+for name in glob.glob('./02_urban_change/*evolution*.tif'):
     print('inside glob')
     print(name)
     ghsl_urban_change_file = name
@@ -74,28 +74,28 @@ print(cfg["02_urban_change"])
 
 
 # land cover
-land_cover_file = 'test'
+# land_cover_file = 'test'
 
-tifCounter = len(glob.glob1('./03_landcover/', "*.tif"))
+# tifCounter = len(glob.glob1('./03_landcover/', "*.tif"))
 
-print('tifCounter, land cover files:')
-print(tifCounter)
+# print('tifCounter, land cover files:')
+# print(tifCounter)
 
-if tifCounter == 1:
-    for name in glob.glob('./03_landcover/*.tif'):
-        print('inside land cover glob single')
-        print(name)
-        landcover_file = name
-elif tifCounter == 0:
-    warnings.warn("there are no land cover files")
-else:
-    for name in glob.glob('./03_landcover/*merged.tif'):
-        print('inside land cover glob multiple')
-        print(name)
-        landcover_file = name
+# if tifCounter == 1:
+#     for name in glob.glob('./03_landcover/*.tif'):
+#         print('inside land cover glob single')
+#         print(name)
+#         landcover_file = name
+# elif tifCounter == 0:
+#     warnings.warn("there are no land cover files")
+# else:
+#     for name in glob.glob('./03_landcover/*merged.tif'):
+#         print('inside land cover glob multiple')
+#         print(name)
+#         landcover_file = name
 
-if landcover_file == 'test':
-    warnings.warn("Warning because there are multiple land cover files but no merged land cover file. Make sure to merge the land cover files and include the word 'merged' in the name of the file.")
+# if landcover_file == 'test':
+#     warnings.warn("Warning because there are multiple land cover files but no merged land cover file. Make sure to merge the land cover files and include the word 'merged' in the name of the file.")
 
 
 # elevation
@@ -289,22 +289,22 @@ def clipdata_wsf(admin_folder, input_raster, output_folder, prepend_file_text):
                     dest.write(out_image)
 
                 # remove temporary clipped raster files
-                fileList = glob.glob(
-                    output_4326_raster_clipped[:-3]+'*', recursive=True)
-                for filePath in fileList:
-                    try:
-                        os.remove(filePath)
-                    except OSError as e:
-                        print("Error while deleting file")
-                        print("Failed with:", e.strerror)  # look what it says
-                fileList = glob.glob(
-                    output_utm_raster_clipped[:-3]+'*', recursive=True)
-                for filePath in fileList:
-                    try:
-                        os.remove(filePath)
-                    except OSError as e:
-                        print("Error while deleting file")
-                        print("Failed with:", e.strerror)  # look what it says
+                # fileList = glob.glob(
+                #     output_4326_raster_clipped[:-3]+'*', recursive=True)
+                # for filePath in fileList:
+                #     try:
+                #         os.remove(filePath)
+                #     except OSError as e:
+                #         print("Error while deleting file")
+                #         print("Failed with:", e.strerror)  # look what it says
+                # fileList = glob.glob(
+                #     output_utm_raster_clipped[:-3]+'*', recursive=True)
+                # for filePath in fileList:
+                #     try:
+                #         os.remove(filePath)
+                #     except OSError as e:
+                #         print("Error while deleting file")
+                #         print("Failed with:", e.strerror)  # look what it says
 
 
 def clipdata(admin_folder, input_raster, output_folder, prepend_file_text):
@@ -341,8 +341,8 @@ clipdata_wsf(admin_folder, ghsl_urban_change_file,
              output_folder, '02_urban_change')
 
 # 03 land cover
-if tifCounter > 0:
-    clipdata(admin_folder, landcover_file, output_folder, '03_landcover')
+# if tifCounter > 0:
+#     clipdata(admin_folder, landcover_file, output_folder, '03_landcover')
 
 # 04 elevation
 # if tifCounter > 0:
