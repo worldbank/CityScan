@@ -100,28 +100,28 @@ print(cfg["02_urban_change"])
 
 # elevation
 
-# elevation_file = 'test'
+elevation_file = 'test'
 
-# tifCounter = len(glob.glob1('./04_elevation/', "*.tif"))
+tifCounter = len(glob.glob1('./04_elevation/', "*.tif"))
 
-# print('tifCounter, elevation files:')
-# print(tifCounter)
+print('tifCounter, elevation files:')
+print(tifCounter)
 
-# if tifCounter == 1:
-#     for name in glob.glob('./04_elevation/*.tif'):
-#         print('inside elevation glob single')
-#         print(name)
-#         elevation_file = name
-# elif tifCounter == 0:
-#     warnings.warn("there are no elevation files")
-# else:
-#     for name in glob.glob('./04_elevation/*merged.tif'):
-#         print('inside elevation glob multiple')
-#         print(name)
-#         elevation_file = name
+if tifCounter == 1:
+    for name in glob.glob('./04_elevation/*.tif'):
+        print('inside elevation glob single')
+        print(name)
+        elevation_file = name
+elif tifCounter == 0:
+    warnings.warn("there are no elevation files")
+else:
+    for name in glob.glob('./04_elevation/*merged.tif'):
+        print('inside elevation glob multiple')
+        print(name)
+        elevation_file = name
 
-# if elevation_file == 'test':
-#     warnings.warn("Warning because there are multiple elevation files but no merged elevation file. Make sure to merge the elevation files and include the word 'merged' in the name of the file.")
+if elevation_file == 'test':
+    warnings.warn("Warning because there are multiple elevation files but no merged elevation file. Make sure to merge the elevation files and include the word 'merged' in the name of the file.")
 
 
 # solar
@@ -345,8 +345,8 @@ clipdata_wsf(admin_folder, ghsl_urban_change_file,
 #     clipdata(admin_folder, landcover_file, output_folder, '03_landcover')
 
 # 04 elevation
-# if tifCounter > 0:
-#     clipdata(admin_folder, elevation_file, output_folder, '04_elevation')
+if tifCounter > 0:
+    clipdata(admin_folder, elevation_file, output_folder, '04_elevation')
 
 # 06 solar
 clipdata(admin_folder, solar_file, output_folder, '06_solar')
