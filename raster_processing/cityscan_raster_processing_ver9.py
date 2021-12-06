@@ -263,13 +263,17 @@ def clipdata_wsf(admin_folder, input_raster, output_folder, prepend_file_text):
                         # print(year)
                         # resolution of each pixel about 30 sq meters. Multiply by pixelSize and Divide by 1,000,000 to get sq km
                         #year_dict[year] = np.count_nonzero(array == year)
-                        year_dict[year] = np.count_nonzero(
-                            array == year) * pixelSizeX * pixelSizeX / 1000000
+                        if year == 1985:
+                            year_dict[year] = np.count_nonzero(
+                            array == year) * pixelSizeX * pixelSizeY / 1000000
+                        else:
+                            year_dict[year] = np.count_nonzero(
+                                array == year) * pixelSizeX * pixelSizeY / 1000000 + year_dict[year-1]
 
                     # save CSV
                     import csv
                     with open(output_folder + '/' + prepend_file_text + "_stats_%s.csv" % file[:-4], 'w') as f:
-                        f.write("year,sq km built\n")
+                        f.write("year,cumulative sq km\n")
                         for key in year_dict.keys():
                             f.write("%s,%s\n" % (key, year_dict[key]))
 
