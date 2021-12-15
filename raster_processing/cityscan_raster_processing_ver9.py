@@ -311,7 +311,7 @@ def clipdata_wsf(admin_folder, input_raster, output_folder, prepend_file_text):
                 #         print("Failed with:", e.strerror)  # look what it says
 
 
-def clipdata(admin_folder, input_raster, output_folder, prepend_file_text):
+def clipdata(admin_folder, input_raster, output_folder, prepend_file_text, elev = False):
 
     for file in os.listdir(admin_folder):
         if file.endswith(".shp"):
@@ -319,16 +319,30 @@ def clipdata(admin_folder, input_raster, output_folder, prepend_file_text):
             with fiona.open(admin_folder + '/' + file, "r") as shapefile:
                 features = [feature["geometry"] for feature in shapefile]
 
-                with rasterio.open(input_raster) as src:
-                    # shapely presumes all operations on two or more features exist in the same Cartesian plane.
-                    out_image, out_transform = rasterio.mask.mask(
-                        src, features, crop=True)
-                    out_meta = src.meta.copy()
+                # Set nodata value to -9999 for elevation raster
+                if elev == True:
+                    with rasterio.open(input_raster) as src:
+                        # shapely presumes all operations on two or more features exist in the same Cartesian plane.
+                        out_image, out_transform = rasterio.mask.mask(
+                            src, features, crop = True, nodata = -9999)
+                        out_meta = src.meta.copy()
 
-                out_meta.update({"driver": "GTiff",
-                                 "height": out_image.shape[1],
-                                 "width": out_image.shape[2],
-                                 "transform": out_transform})
+                    out_meta.update({"driver": "GTiff",
+                                    "height": out_image.shape[1],
+                                    "width": out_image.shape[2],
+                                    "transform": out_transform,
+                                    'nodata': -9999})
+                else:
+                    with rasterio.open(input_raster) as src:
+                        # shapely presumes all operations on two or more features exist in the same Cartesian plane.
+                        out_image, out_transform = rasterio.mask.mask(
+                            src, features, crop = True)
+                        out_meta = src.meta.copy()
+
+                    out_meta.update({"driver": "GTiff",
+                                    "height": out_image.shape[1],
+                                    "width": out_image.shape[2],
+                                    "transform": out_transform})
 
                 with rasterio.open(output_folder + '/' + prepend_file_text + "_%s.tif" % file[:-4], "w", **out_meta) as dest:
                     dest.write(out_image)
@@ -350,7 +364,7 @@ clipdata_wsf(admin_folder, ghsl_urban_change_file,
 
 # 04 elevation
 if tifCounter > 0:
-    clipdata(admin_folder, elevation_file, output_folder, '04_elevation')
+    clipdata(admin_folder, elevation_file, output_folder, '04_elevation', elev=True)
 
 # 06 solar
 clipdata(admin_folder, solar_file, output_folder, '06_solar')
