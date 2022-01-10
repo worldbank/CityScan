@@ -333,6 +333,28 @@ def clipdata(admin_folder, input_raster, output_folder, prepend_file_text):
                 with rasterio.open(output_folder + '/' + prepend_file_text + "_%s.tif" % file[:-4], "w", **out_meta) as dest:
                     dest.write(out_image)
 
+# Same as clipdata(), but set the nodata value to -99999
+def clipdata_elev(admin_folder, input_raster, output_folder, prepend_file_text):
+
+    for file in os.listdir(admin_folder):
+        if file.endswith(".shp"):
+            print(file)
+            with fiona.open(admin_folder + '/' + file, "r") as shapefile:
+                features = [feature["geometry"] for feature in shapefile]
+
+                with rasterio.open(input_raster) as src:
+                    out_image, out_transform = rasterio.mask.mask(src, features, crop = True, nodata = -99999)
+                    out_meta = src.meta.copy()
+
+                out_meta.update({"driver": "GTiff",
+                                "height": out_image.shape[1],
+                                "width": out_image.shape[2],
+                                "transform": out_transform,
+                                'nodata': -99999})
+
+                with rasterio.open(output_folder + '/' + prepend_file_text + "_%s.tif" % file[:-4], "w", **out_meta) as dest:
+                    dest.write(out_image)
+
 
 print('starting processing')
 
@@ -350,7 +372,7 @@ clipdata_wsf(admin_folder, ghsl_urban_change_file,
 
 # 04 elevation
 if tifCounter > 0:
-    clipdata(admin_folder, elevation_file, output_folder, '04_elevation')
+    clipdata_elev(admin_folder, elevation_file, output_folder, '04_elevation')
 
 # 06 solar
 clipdata(admin_folder, solar_file, output_folder, '06_solar')
