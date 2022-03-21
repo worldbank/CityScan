@@ -21,7 +21,7 @@ print('note: Your input admin datasets should be using crs 4326')
 
 # load configuration file, this files stores the file locations for the global data files
 with open("./global_data_config_personal_windows.yml", "r") as ymlfile:
-    cfg = yaml.load(ymlfile)
+    cfg = yaml.safe_load(ymlfile)
 
 print('print cfg file')
 print(cfg)
@@ -212,7 +212,7 @@ def clipdata_wsf(admin_folder, input_raster, output_folder, prepend_file_text):
         if file.endswith(".shp"):
             print(file)
 
-            features_gdf = gpd.read_file(admin_folder + '/' + file)
+            features_gdf = gpd.read_file(admin_folder + '/' + file).to_crs(epsg = 4326)
             print('print admin_file crs')
             print(features_gdf.crs)
 
@@ -238,7 +238,7 @@ def clipdata_wsf(admin_folder, input_raster, output_folder, prepend_file_text):
                                  "transform": out_transform})
 
                 output_4326_raster_clipped = output_folder + \
-                    prepend_file_text + "_4326_clipped.tif"
+                    prepend_file_text + "_WSF_4326_reclass.tif"
 
                 # save for stats
                 with rasterio.open(output_4326_raster_clipped, "w", **out_meta) as dest:
@@ -285,8 +285,7 @@ def clipdata_wsf(admin_folder, input_raster, output_folder, prepend_file_text):
                 out_image[out_image == 1985] = 1
 
                 output_4326_raster_clipped_reclass = output_folder + \
-                    prepend_file_text + "_WSF_4326_reclass" + \
-                    "_%s.tif" % file[:-4]
+                    prepend_file_text + "_WSF_4326.tif"
 
                 # save for stats
                 with rasterio.open(output_4326_raster_clipped_reclass, "w", **out_meta) as dest:
@@ -316,22 +315,24 @@ def clipdata(admin_folder, input_raster, output_folder, prepend_file_text):
     for file in os.listdir(admin_folder):
         if file.endswith(".shp"):
             print(file)
-            with fiona.open(admin_folder + '/' + file, "r") as shapefile:
-                features = [feature["geometry"] for feature in shapefile]
+            shp = gpd.read_file(admin_folder + '/' + file).to_crs(epsg = 4326)
+            features = shp.geometry
+            # with fiona.open(admin_folder + '/' + file, "r") as shapefile:
+            #     features = [feature["geometry"] for feature in shapefile]
 
-                with rasterio.open(input_raster) as src:
-                    # shapely presumes all operations on two or more features exist in the same Cartesian plane.
-                    out_image, out_transform = rasterio.mask.mask(
-                        src, features, crop=True)
-                    out_meta = src.meta.copy()
+            with rasterio.open(input_raster) as src:
+                # shapely presumes all operations on two or more features exist in the same Cartesian plane.
+                out_image, out_transform = rasterio.mask.mask(
+                    src, features, crop=True)
+                out_meta = src.meta.copy()
 
-                out_meta.update({"driver": "GTiff",
-                                 "height": out_image.shape[1],
-                                 "width": out_image.shape[2],
-                                 "transform": out_transform})
+            out_meta.update({"driver": "GTiff",
+                                "height": out_image.shape[1],
+                                "width": out_image.shape[2],
+                                "transform": out_transform})
 
-                with rasterio.open(output_folder + '/' + prepend_file_text + "_%s.tif" % file[:-4], "w", **out_meta) as dest:
-                    dest.write(out_image)
+            with rasterio.open(output_folder + '/' + prepend_file_text + "_%s.tif" % file[:-4], "w", **out_meta) as dest:
+                dest.write(out_image)
 
 # Same as clipdata(), but set the nodata value to -99999
 def clipdata_elev(admin_folder, input_raster, output_folder, prepend_file_text):
@@ -359,7 +360,7 @@ def clipdata_elev(admin_folder, input_raster, output_folder, prepend_file_text):
 print('starting processing')
 
 # 01 population
-clipdata(admin_folder, pop_file, output_folder, prepend_file_text)
+# clipdata(admin_folder, pop_file, output_folder, prepend_file_text)
 
 # 02 urban change
 # clipdata_urban_change(admin_folder, ghsl_urban_change_file, output_folder, '02_urban_change')
@@ -371,22 +372,24 @@ clipdata_wsf(admin_folder, ghsl_urban_change_file,
 #     clipdata(admin_folder, landcover_file, output_folder, '03_landcover')
 
 # 04 elevation
-if tifCounter > 0:
-    clipdata_elev(admin_folder, elevation_file, output_folder, '04_elevation')
+# if tifCounter > 0:
+#     clipdata_elev(admin_folder, elevation_file, output_folder, '04_elevation')
 
 # 06 solar
-clipdata(admin_folder, solar_file, output_folder, '06_solar')
+# clipdata(admin_folder, solar_file, output_folder, '06_solar')
 
 # 07 air quality
-clipdata(admin_folder, cfg["07_air_quality"] +
-         'sdei-global-annual-gwr-pm2-5-modis-misr-seawifs-aod-2016-geotiff/gwr_pm25_2016.tif', output_folder, '07_air_quality')
+# clipdata(admin_folder, cfg["07_air_quality"] +
+#          'sdei-global-annual-gwr-pm2-5-modis-misr-seawifs-aod-2016-geotiff/gwr_pm25_2016.tif', output_folder, '07_air_quality_2016')
+# clipdata(admin_folder, cfg["07_air_quality"] +
+#          'sdei-global-annual-gwr-pm2-5-modis-misr-seawifs-aod-1998-geotiff/gwr_pm25_1998.tif', output_folder, '07_air_quality_1998')
 
 # 11 landslides
-clipdata(admin_folder, cfg["11_landslides"] +
-         'suscV1_1.tif', output_folder, '11_landslides')
+# clipdata(admin_folder, cfg["11_landslides"] +
+#          'suscV1_1.tif', output_folder, '11_landslides')
 
 # 13 imperviousness
-clipdata(admin_folder, imperv_file, output_folder, '13_imperviousness')
+# clipdata(admin_folder, imperv_file, output_folder, '13_imperviousness')
 
 
 # NOT done by this script
