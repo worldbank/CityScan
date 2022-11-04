@@ -91,7 +91,7 @@ Solar resource and PV power potential data can be acquired from the Global Solar
 
 ## 07_air_quality
 
-The Global Annual PM2.5 Grids from MODIS, MISR and SeaWiFS Aerosol Optical Depth (AOD) with GWR, 1998-2019 consist of annual concentrations (micrograms per cubic meter) of ground-level fine particulate matter (PM2.5), with dust and sea-salt removed. The 2016 dataset is downloaded from the following site: https://sedac.ciesin.columbia.edu/data/set/sdei-global-annual-gwr-pm2-5-modis-misr-seawifs-aod-v4-gl-03/data-download. This file should be saved within the global_data_sets folder, within the 07_air_quality folder.
+The Global Annual PM2.5 Grids from MODIS, MISR and SeaWiFS Aerosol Optical Depth (AOD) with GWR, 1998-2019 consist of annual concentrations (micrograms per cubic meter) of ground-level fine particulate matter (PM2.5), with dust and sea-salt removed. We are using the 2019 dataset. The dataset is downloaded from the following site: https://sedac.ciesin.columbia.edu/data/set/sdei-global-annual-gwr-pm2-5-modis-misr-seawifs-aod-v4-gl-03/data-download. This file should be saved within the global_data_sets folder, within the 07_air_quality folder.
 
 ## 08_uhi (depreciated, run a different way now)
 
