@@ -8,7 +8,7 @@ global_data_sets/03_landcover/*
 global_data_sets/07_air_quality/*
 global_data_sets/11_landslides/*
 raster_processing/01_population/*
-raster_processing/02_urban_change/*
+#raster_processing/02_urban_change/*
 raster_processing/03_landcover/*
 raster_processing/04_elevation/*
 raster_processing/06_solar/*
