@@ -66,6 +66,19 @@ https://esa-worldcover.org/en/data-access
 
 By logging in with your account, WorldCover products can be accessed using the WorldCover viewer and downloaded: https://viewer.esa-worldcover.org/worldcover/
 
+WorldCover classes:
+- 10 Tree cover
+- 20 Shrubland
+- 30 Grassland
+- 40 Cropland
+- 50 Built-up
+- 60 Bare / sparse vegetation
+- 70 Snow and Ice
+- 80 Permanent water bodies
+- 90 Herbaceous wetland
+- 95 Mangroves
+- 100 Moss and lichen
+
 Note: previously we used the ESA land cover maps that had lower resolution;
 ECA has a global land cover maps at 300m spatial resolution (http://maps.elie.ucl.ac.be/CCI/viewer/download.php). Download the most recent 2015 Land Cover map in .tif form. The title of the file should be: ESACCI-LC-L4-LCCS-Map-300m-P1Y-2015-v2.0.7.tif. This file should be saved within the 03_landcover folder, which is inside the global_data_sets folder. If the city scan is in in Africa, then the higher resolution Africa 20m land cover dataset should be used, and this can be downloaded here (http://2016africalandcover20m.esrin.esa.int/). This title of this file should be: ESACCI-LC-L4-LC10-Map-20m-P1Y-2016-v1.0.tif. This file should be saved within the global_data_sets folder, within the 03_Africa_20m_landcover folder.
 
