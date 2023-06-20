@@ -1,0 +1,3 @@
+[submodule "desertification/convergence_of_evidence/tms2geotiff"]
+	path = desertification/convergence_of_evidence/tms2geotiff
+	url = https://github.com/d3netxer/tiles-to-tiff
