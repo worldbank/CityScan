@@ -84,8 +84,8 @@ ECA has a global land cover maps at 300m spatial resolution (http://maps.elie.uc
 
 ## 04_elevation
 
-As of September 2022 we are now using the FABDEM data, which is a GLO-30 derived product with forests and buildings remove. Here is the link:
-https://data.bris.ac.uk/data/dataset/25wfy0f9ukoge2gs7a5mqpq2j7
+As of September 2022 we are now using the FABDEM data, which is a GLO-30 derived product with forests and buildings remove. Here is the link to ver 1.2:
+https://data.bris.ac.uk/data/dataset/s5hqmjcdj8yo2ibzi9b4ew3sn
 
 We use the ESA Copernicus Digital Elevation Model (DEM) GLO-30 product (DGED version). It is available under the Panda catalogue (https://panda.copernicus.eu/web/cds-catalogue/panda), and it is required to register. Instructions on how to register: https://spacedata.copernicus.eu/web/cscda/data-access/discovery-and-download. For more information: https://www.usgs.gov/news/newly-released-elevation-dataset-highlights-value-importance-international-partnerships?qt-news_science_products=1#qt-news_science_products
 
